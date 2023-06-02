@@ -18,7 +18,6 @@ def analise_login_senha(login, senha, dic):
             return True
         else:
             return "Senha incorreta"
-    
     return "Login inexistente"
     
 
