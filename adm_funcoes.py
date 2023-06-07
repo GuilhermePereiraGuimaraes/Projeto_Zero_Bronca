@@ -34,3 +34,25 @@ def remover_professor(login, senha):
         arquivo.write(x)
     arquivo.close()
 
+def gerar_codigo_grupo():
+    from random import randint
+    from math import pi
+
+    arquivo = open("projetos.txt","r")
+    ler_arquivo = arquivo.read()
+    codigo =""
+
+    while True:
+        numero = round(pi * randint(1, 10000000))
+        codigo = str(numero)[:5]
+        if codigo in ler_arquivo:
+            continue
+        break
+
+    return codigo
+
+
+def add_projeto(num_gp, nome_gp, periodo, tematica, nota, cliente):
+    pass
+
+print(gerar_codigo_grupo())
