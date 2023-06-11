@@ -79,10 +79,24 @@ def filtro_cod_projeto(codigo,colunas):
     arquivo = open("doc_dados\projetos.txt","r")
     todos_projetos = arquivo.readlines()
     
-    
+    projetos_contados = 0
     projetos_filtrados = Table(title="Projetos")
     
     for coluna in colunas:
         projetos_filtrados.add_column(coluna, justify="center", style="color(2)")
 
+    for pl in todos_projetos:
+        projeto = pl.replace("\n","")
+        projeto = list(projeto.split("|"))
+        if codigo == projeto[0]:
+            projetos_contados += 1
+            projetos_filtrados.add_row(*projeto)
+            break
+    
+    arquivo.close()
+    
+    if projetos_contados > 0:
+        return projetos_filtrados
+    else:
+        return "Nenhum projeto encontrado!"    
     

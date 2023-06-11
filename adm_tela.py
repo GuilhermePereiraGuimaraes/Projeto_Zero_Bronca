@@ -1,3 +1,5 @@
+from rich.console import Console
+from rich.table import Table
 import adm_funcoes
 import subprocess
 
@@ -73,6 +75,8 @@ elif escolha_acao == "2":
     7 - Cliente
     Sua escolha: ''')
     if escolha_filtro == "1":
-        pass
+        codigo = input("Digite o codigo: ")
+        projetos_filtrados = adm_funcoes.filtro_cod_projeto(codigo, colunas)
+        Console().print(projetos_filtrados)
 else:
     pass
