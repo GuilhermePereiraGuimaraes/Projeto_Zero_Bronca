@@ -1,5 +1,5 @@
 import adm_funcoes
-
+import subprocess
 
 escolha_acao = input('''O que você gostaria de fazer ?
 1 - Modificar projetos (adicionar ou excluir)
@@ -60,6 +60,19 @@ if escolha_acao == "1":
     except ValueError:
         print("Valor inválido!")
 elif escolha_acao == "2":
-    pass
+    colunas = ["Cod. Projeto","Num. Grupo", "Nome do Grupo", "Período", "Temática do Projeto", "Nota", "Cliente", "Link"]
+    
+    subprocess.run(["python","tabela_projetos_professores.py"])
+    escolha_filtro = input('''Qual filtro você gostaria de utilizar?
+    1 - Código do projeto
+    2 - Número do grupo
+    3 - Nome do grupo
+    4 - Período
+    5 - Temática
+    6 - Nota
+    7 - Cliente
+    Sua escolha: ''')
+    if escolha_filtro == "1":
+        pass
 else:
     pass

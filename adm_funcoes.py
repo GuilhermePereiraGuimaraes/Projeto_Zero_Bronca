@@ -1,3 +1,7 @@
+from rich.console import Console
+from rich.table import Table
+
+
 def add_aluno(login, senha):
     arquivo = open("doc_dados\alunos.txt","a")
     aluno_acesso = f"{login} {senha}\n"
@@ -70,3 +74,15 @@ def remover_projeto(codigo):
             continue
         arquivo.write(p)
     arquivo.close()
+
+def filtro_cod_projeto(codigo,colunas):
+    arquivo = open("doc_dados\projetos.txt","r")
+    todos_projetos = arquivo.readlines()
+    
+    
+    projetos_filtrados = Table(title="Projetos")
+    
+    for coluna in colunas:
+        projetos_filtrados.add_column(coluna, justify="center", style="color(2)")
+
+    
