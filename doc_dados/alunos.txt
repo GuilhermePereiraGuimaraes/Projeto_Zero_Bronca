@@ -1,3 +1,2 @@
-aluno1@cesar.school 123321
 aluno2@cesar.school 654321
 gpg3@cesar.school 123321

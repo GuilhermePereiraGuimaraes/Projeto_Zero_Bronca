@@ -1,29 +1,11 @@
 from getpass import getpass
-from adm_funcoes import add_aluno,add_professor
+from funcoes_projeto import add_aluno,add_professor,converter_file_dict, analise_login_senha
 import subprocess
-
-# Essa primeira função coloca os valores de um arquivo em um dicionário
-def converter_file_dict(file,dic):
-    for x in file.readlines():
-        lista = x.split(" ")
-        lista[1] = lista[1][:len(lista[1])-1]
-        dic.update({lista[0]:lista[1]})
-
-# Essa função busca checar a válidade do login e senha com base em um dicionário especificado
-def analise_login_senha(login, senha, dic):
-    login_dic = dic.keys()    
-
-    if login in login_dic:
-        if dic[login]==senha:
-            return True
-        else:
-            return "Senha incorreta"
-    return "Login inexistente"
     
 
 # Aqui abrimos o arquivo apenas para leitura
-file_adm = open("administradores.txt","r")
-file_alunos = open("alunos.txt","r")
+file_adm = open("doc_dados\\administradores.txt","r")
+file_alunos = open("doc_dados\\alunos.txt","r")
 
 dicionario_adms = {}
 dicionario_alunos={}
@@ -83,7 +65,7 @@ while tentando_entrar_1 == False:
                     senha = getpass("Digite sua senha: ",stream=None)
                     if analise_login_senha(login, senha, dicionario_alunos)==True:
                         print("Login efeuado com sucesso!")
-                        # subprocess.run(["python","aluno_tela.py"])
+                        subprocess.run(["python","aluno_tela.py"])
                     else:
                         if analise_login_senha(login, senha, dicionario_alunos) == "Senha incorreta":
                             print("Senha incorreta! Tente denovo.")
