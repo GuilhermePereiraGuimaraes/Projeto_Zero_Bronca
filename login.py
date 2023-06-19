@@ -95,6 +95,7 @@ while tentando_entrar_1 == False:
                         if dominio_professor == login[-len(dominio_professor):] and login not in lista_emails_professores:
                             add_professor(login, senha)
                             print("Professor cadastrado.")
+                            subprocess.run(["python","adm_tela.py"])
                             break
                         elif login in lista_emails_professores:
                             print("Email já cadastrado! Tente efetuar o login.")
@@ -109,6 +110,7 @@ while tentando_entrar_1 == False:
                         if dominio_aluno == login[-len(dominio_aluno):] and login not in lista_emails_alunos:
                             add_aluno(login, senha)
                             print("Aluno cadastrado.")
+                            subprocess.run(["python","aluno_tela.py"])
                             break
                         elif login in lista_emails_alunos:
                             print("Email já cadastrado! Tente efetuar o login.")
@@ -117,8 +119,8 @@ while tentando_entrar_1 == False:
                             print("Digite um email válido.")
                 else:
                     print("Opção inválida!")
-            else:
-                print("Opção inválida! Tente novamente.")
+        else:
+            print("Opção inválida! Tente novamente.")
     except ValueError:
         print("Digite apenas 1 ou 2.")
 
